@@ -2,16 +2,18 @@ use std::io;
 use std::io::Write;
 
 fn main() {
-    print!("Enter a number: ");
-    io::stdout().flush().expect("Flush failed!");
+    loop {
+        print!("Enter a number: ");
+        io::stdout().flush().expect("Flush failed!");
 
-    let mut scanned_number = String::new();
-    io::stdin()
-        .read_line(&mut scanned_number)
-        .expect("Your input is not valid.");
+        let mut scanned_number = String::new();
+        io::stdin()
+            .read_line(&mut scanned_number)
+            .expect("Your input is not valid.");
 
-    let number: u32 = scanned_number.trim().parse().expect("That is not a valid number!");
-    println!("\nDEC: {}", number);
-    println!("HEX: {:X}", number);
-    println!("OCT: {:o}", number);
+        let number: u32 = scanned_number.trim().parse().expect("That is not a valid number!");
+        println!("\nDEC: {}", number);
+        println!("HEX: {:X}", number);
+        println!("OCT: {:o}\n", number);
+    }
 }
